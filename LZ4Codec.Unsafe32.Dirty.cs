@@ -810,7 +810,3 @@ namespace LZ4PCL
     }
 #endif
 }
-
-// ReSharper restore JoinDeclarationAndInitializer
-// ReSharper restore TooWideLocalVariableScope
-// ReSharper restore InconsistentNaming

@@ -81,6 +81,7 @@ namespace LZ4PCL
 
         private const int MINMATCH = 4;
 #pragma warning disable 162
+        // ReSharper disable once UnreachableCode
         private const int SKIPSTRENGTH = NOTCOMPRESSIBLE_DETECTIONLEVEL > 2 ? NOTCOMPRESSIBLE_DETECTIONLEVEL : 2;
 #pragma warning restore 162
         private const int COPYLENGTH = 8;
@@ -258,5 +259,3 @@ namespace LZ4PCL
         }
     }
 }
-
-// ReSharper restore InconsistentNaming

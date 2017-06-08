@@ -526,5 +526,3 @@ namespace LZ4PCL
     }
 #endif
 }
-
-// ReSharper restore InconsistentNaming

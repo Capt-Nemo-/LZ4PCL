@@ -796,9 +796,3 @@ namespace LZ4PCL
     }
 #endif
 }
-
-// ReSharper restore RedundantIfElseBlock
-// ReSharper restore JoinDeclarationAndInitializer
-// ReSharper restore TooWideLocalVariableScope
-// ReSharper restore InconsistentNaming
-// ReSharper restore CheckNamespace
