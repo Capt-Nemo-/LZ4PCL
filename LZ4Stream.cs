@@ -144,9 +144,7 @@ namespace LZ4PCL
         /// <returns>NotSupportedException</returns>
         private static NotSupportedException NotSupported(string operationName)
         {
-            return new NotSupportedException(
-                string.Format(
-                    "Operation '{0}' is not supported", operationName));
+            return new NotSupportedException($"Operation '{operationName}' is not supported");
         }
 
         /// <summary>Returns EndOfStreamException.</summary>
@@ -234,7 +232,7 @@ namespace LZ4PCL
         {
             var buffer = new byte[1];
             while (true) {
-                var b = (byte) (value & 0x7F);
+                byte b = (byte) (value & 0x7F);
                 value >>= 7;
                 buffer[0] = (byte) (b | (value == 0 ? 0 : 0x80));
                 _innerStream.Write(buffer, 0, 1);
@@ -294,7 +292,7 @@ namespace LZ4PCL
                 var flags = (ChunkFlags) varint;
                 bool isCompressed = (flags & ChunkFlags.Compressed) != 0;
 
-                var originalLength = (int) ReadVarInt();
+                int originalLength = (int) ReadVarInt();
                 int compressedLength = isCompressed ? (int) ReadVarInt() : originalLength;
                 if (compressedLength > originalLength) {
                     throw EndOfStream(); // corrupted
@@ -334,38 +332,26 @@ namespace LZ4PCL
 
         /// <summary>When overridden in a derived class, gets a value indicating whether the current stream supports reading.</summary>
         /// <returns>true if the stream supports reading; otherwise, false.</returns>
-        public override bool CanRead
-        {
-            get { return _compressionMode == CompressionMode.Decompress; }
-        }
+        public override bool CanRead => _compressionMode == CompressionMode.Decompress;
 
         /// <summary>When overridden in a derived class, gets a value indicating whether the current stream supports seeking.</summary>
         /// <returns>true if the stream supports seeking; otherwise, false.</returns>
-        public override bool CanSeek
-        {
-            get { return false; }
-        }
+        public override bool CanSeek => false;
 
         /// <summary>When overridden in a derived class, gets a value indicating whether the current stream supports writing.</summary>
         /// <returns>true if the stream supports writing; otherwise, false.</returns>
-        public override bool CanWrite
-        {
-            get { return _compressionMode == CompressionMode.Compress; }
-        }
+        public override bool CanWrite => _compressionMode == CompressionMode.Compress;
 
         /// <summary>When overridden in a derived class, gets the length in bytes of the stream.</summary>
         /// <returns>A long value representing the length of the stream in bytes.</returns>
-        public override long Length
-        {
-            get { return -1; }
-        }
+        public override long Length => -1;
 
         /// <summary>When overridden in a derived class, gets or sets the position within the current stream.</summary>
         /// <returns>The current position within the stream.</returns>
         public override long Position
         {
-            get { return -1; }
-            set { throw NotSupported("SetPosition"); }
+            get => -1;
+            set => throw NotSupported("SetPosition");
         }
 
         /// <summary>
