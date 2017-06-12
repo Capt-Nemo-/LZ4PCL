@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Description>LZ4 compression portable class library</Description>
     <Company>Matthew Ducker</Company>
     <Copyright>Copyright ©  2014</Copyright>
@@ -21,5 +21,9 @@
     <Optimize>True</Optimize>
     <DocumentationFile>bin\ReleaseWithUnsafe\netstandard1.4\LZ4DNS.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 
 </Project>
